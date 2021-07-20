@@ -14,6 +14,13 @@ export interface SurveyResponse {
   justification?: string;
 }
 
+export interface LanguageData {
+  // Language for rendering the survey
+  surveyLanguage: string;
+  // Language for rendering the UI
+  UILanguage: string;
+  surveyType: string;
+}
 // The data field for the state
 export interface AuthenticationData {
   // isOrganizer boolean value

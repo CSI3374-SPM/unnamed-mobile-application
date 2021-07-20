@@ -6,14 +6,33 @@ import { RootNavigationProp } from "../../types";
 import { DarkTheme, DefaultTheme } from "../../constants/Colors";
 // @ts-ignore
 import { Tooltip, Text } from "react-native-elements";
+import DropDownPicker from "react-native-dropdown-picker";
 
 export default function OptionsScreen() {
   const navigation = useNavigation<RootNavigationProp>();
   const colorScheme = useColorScheme();
   const theme = colorScheme === "dark" ? DarkTheme : DefaultTheme;
+  const [open, setOpen] = useState(false);
+  const [language, setLanguage] = useState("");
+  const [items, setItems] = useState([
+    { label: "🇺🇸 - English", value: "eng" },
+    { label: "🇯🇵 - 日本語", value: "ja" },
+  ]);
+
   return (
     <View style={styles.container}>
       <View style={styles.organizerArea}>
+        <DropDownPicker
+          style={styles.languagePicker}
+          containerStyle={styles.languagePicker}
+          open={open}
+          value={language}
+          items={items}
+          setOpen={setOpen}
+          setValue={setLanguage}
+          setItems={setItems}
+          placeholder={"Language"}
+        />
         <View style={{ flexDirection: "row" }}>
           <Title
             style={{
@@ -25,6 +44,7 @@ export default function OptionsScreen() {
           >
             Moderator
           </Title>
+
           {
             // @ts-ignore
             <Tooltip
@@ -198,5 +218,12 @@ const styles = StyleSheet.create({
     width: 15,
     justifyContent: "center",
     alignItems: "center",
+  },
+  languagePicker: {
+    width: "60%",
+    marginLeft: "38%",
+  },
+  languagePickerInside: {
+    width: "100%",
   },
 });

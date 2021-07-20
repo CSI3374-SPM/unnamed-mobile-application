@@ -1,4 +1,8 @@
-import { SurveyResponse, AuthenticationData } from "./SurveyReducer";
+import {
+  SurveyResponse,
+  AuthenticationData,
+  LanguageData,
+} from "./SurveyReducer";
 
 export const surveyReduxName = "survey";
 export enum SurveyActionTypes {
